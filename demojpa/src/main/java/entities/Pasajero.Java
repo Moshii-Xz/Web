@@ -1,26 +1,28 @@
+
 package entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Set;
 
 @Data
 @Entity
-public class Pasajero {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(nullable = false)
+@Table (name = "pasajero")
+public class Pasajero{
+    @Id FeneatedValue(strategy = GenerationType.AUTO)
+    private Long Id;
+    @colum (nullable = false)
     private String nombre;
-
-    @Column(nullable = false)
-    private String nid;
+    @colum (nullable = false)
+    private String NID;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "pasaporte_id", referencedColumnName = "id", unique = true)
+    @JoinColumn(name = "pasaporte_Id", referencedColumnName = "Id", unique = true)
     private Pasaporte pasaporte;
 
-    @OneToMany(mappedBy = "pasajero")
+    @OneToMany(mappedy="pasajero")
     private List<Reserva> reserva;
 }

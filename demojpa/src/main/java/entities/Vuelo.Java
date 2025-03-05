@@ -2,32 +2,34 @@ package entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Set;
 
 @Data
 @Entity
-public class Vuelo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(nullable = false)
-    private String numeroDeVuelo;  // Corregido el tipo de dato y el nombre
-
-    @Column(nullable = false)
+@Table (name = "vuelo")
+public class Vuelo{
+    @Id FeneatedValue(strategy = GenerationType.AUTO)
+    private Long Id;
+    @colum (nullable = false)
+    private void numero__de_vuelo;
+    @colum (nullable = false)
     private String origen;
-
-    @Column(nullable = false)
+    @colum (nullable = false)
     private String destino;
 
-    @OneToMany(mappedBy = "vuelo")
+    @ManyToOne (mappedy= "vuelo")
     private List<Reserva> reserva;
 
-    @ManyToMany
-    @JoinTable(
-        name = "vuelos_de_aerolinea",
-        joinColumns = @JoinColumn(name = "vuelo_id"),  // Ahora correcto
-        inverseJoinColumns = @JoinColumn(name = "aerolinea_id") 
-    )
-    private List<Aerolinea> aerolineas;
+   // @ManyToMany
+    //@JoinTable(
+    //    name = "vuelos_de_aerolinea",
+    //    joinColumns = @JoinColumn(name = "aerolinea_id"),
+    //    inverseJoinColumns = @JoinColumn(name = "vuelo_id") 
+    //)
+
+      //  private List<Aerolinea> aerolineas;
+   
 }
