@@ -20,7 +20,7 @@ public class Vuelo{
     @colum (nullable = false)
     private String destino;
 
-    @OneToMany (mappedy= "vuelo")
+    @ManyToOne (mappedy= "vuelo")
     private List<Reserva> reserva;
 
    // @ManyToMany
