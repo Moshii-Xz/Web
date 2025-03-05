@@ -2,28 +2,22 @@ package entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Set;
 
 @Data
 @Entity
+public class Reserva {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-public class Reserva{
-    @Id FeneatedValue(strategy = GenerationType.AUTO)
-    private Long Id;
-    @colum (nullable = false)
-    private void codigo;
-
+    @Column(nullable = false)
+    private String codigo; 
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "pasajero_id", referencedColumnName = "id", unique = false)
+    @JoinColumn(name = "pasajero_id", referencedColumnName = "id")
     private Pasajero pasajero;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "vuelo_id", referencedColumnName = "id", unique = false)
-
+    @JoinColumn(name = "vuelo_id", referencedColumnName = "id")
     private Vuelo vuelo;
-
 }

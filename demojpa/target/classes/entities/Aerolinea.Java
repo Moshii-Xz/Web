@@ -1,22 +1,19 @@
-
 package entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Set;
+import java.util.List;
 
 @Data
 @Entity
+public class Aerolinea {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-public class Aerolinea{
-    @Id FeneatedValue(strategy = GenerationType.AUTO)
-    private Long Id;
-    @colum (nullable = false)
+    @Column(nullable = false)
     private String nombre;
 
-    @ManyToMany(mappedBy = "aerolinea")
+    @ManyToMany(mappedBy = "aerolineas") 
     private List<Vuelo> vuelos;
 }
